@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/opencv-cmake
+CMAKE_SOURCE_DIR = /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/ECE4250-Project1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/opencv-cmake
+CMAKE_BINARY_DIR = /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/ECE4250-Project1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/opencv-cmake/CMakeFiles /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/opencv-cmake/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/ECE4250-Project1/CMakeFiles /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/ECE4250-Project1/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/opencv-cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/noah/Dropbox/Cornell_Classes/2015sp/ECE4250/project1/ECE4250-Project1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -135,6 +135,30 @@ DisplayImage.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.s
 .PHONY : DisplayImage.cpp.s
 
+ROTAverage.o: ROTAverage.cpp.o
+.PHONY : ROTAverage.o
+
+# target to build an object file
+ROTAverage.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.o
+.PHONY : ROTAverage.cpp.o
+
+ROTAverage.i: ROTAverage.cpp.i
+.PHONY : ROTAverage.i
+
+# target to preprocess a source file
+ROTAverage.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.i
+.PHONY : ROTAverage.cpp.i
+
+ROTAverage.s: ROTAverage.cpp.s
+.PHONY : ROTAverage.s
+
+# target to generate assembly for a file
+ROTAverage.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.s
+.PHONY : ROTAverage.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -147,6 +171,9 @@ help:
 	@echo "... DisplayImage.o"
 	@echo "... DisplayImage.i"
 	@echo "... DisplayImage.s"
+	@echo "... ROTAverage.o"
+	@echo "... ROTAverage.i"
+	@echo "... ROTAverage.s"
 .PHONY : help
 
 

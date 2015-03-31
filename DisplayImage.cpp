@@ -5,18 +5,19 @@ using namespace cv;
 
 int main(int argc, char** argv )
 {
-        if ( argc != 2 )
-        {
+   if ( argc != 2 )
+   {
         printf("usage: DisplayImage.out <Image_Path>\n");
         return -1;
-        }
-   Mat image;
+   }
+   Mat image, hsv_image;
    image = imread( argv[1], 1 );
-        if ( !image.data )
-        {
+   if ( !image.data )
+   {
         printf("No image data \n");
         return -1;
-        }
+   }
+   cvtColor(image,hsv_image,CV_BGR2HSV);
    namedWindow("Display Image", WINDOW_AUTOSIZE );
    imshow("Display Image", image);
    waitKey(0);

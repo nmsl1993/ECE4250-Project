@@ -6,15 +6,11 @@ using namespace cv;
 //#define _DEBUG_
 
 
-int main(int argc, char** argv )
+int displayImage(char* imname)
 {
-   if ( argc != 2 )
-   {
-        printf("usage: DisplayImage.out <Image_Path>\n");
-        return -1;
-   }
+
    Mat image, hsv_image, luv_image, kmeans_output;
-   image = imread( argv[1], 1 );
+   image = imread( imname, 1 );
    if ( !image.data )
    {
         printf("No image data \n");

@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 2.8)
-project( DisplayImage )
+project( aesthetic )
 find_package( OpenCV REQUIRED )
-add_executable( DisplayImage DisplayImage.cpp ROTAverage.cpp 
+add_library( aesthetic DisplayImage.cpp ROTAverage.cpp 
 Sizer.cpp KMeansCluster.cpp)
-target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+target_link_libraries( aesthetic ${OpenCV_LIBS} )
+
+cmake_minimum_required(VERSION 2.8)
+project( train )
+find_package( OpenCV REQUIRED )
+add_executable( train train.cpp)
+target_link_libraries( train aesthetic ${OpenCV_LIBS} )

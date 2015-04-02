@@ -99,24 +99,37 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DisplayImage
+# Target rules for targets named aesthetic
 
 # Build rule for target.
-DisplayImage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DisplayImage
-.PHONY : DisplayImage
+aesthetic: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 aesthetic
+.PHONY : aesthetic
 
 # fast build rule for target.
-DisplayImage/fast:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/build
-.PHONY : DisplayImage/fast
+aesthetic/fast:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/build
+.PHONY : aesthetic/fast
+
+#=============================================================================
+# Target rules for targets named train
+
+# Build rule for target.
+train: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 train
+.PHONY : train
+
+# fast build rule for target.
+train/fast:
+	$(MAKE) -f CMakeFiles/train.dir/build.make CMakeFiles/train.dir/build
+.PHONY : train/fast
 
 DisplayImage.o: DisplayImage.cpp.o
 .PHONY : DisplayImage.o
 
 # target to build an object file
 DisplayImage.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.o
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.o
 .PHONY : DisplayImage.cpp.o
 
 DisplayImage.i: DisplayImage.cpp.i
@@ -124,7 +137,7 @@ DisplayImage.i: DisplayImage.cpp.i
 
 # target to preprocess a source file
 DisplayImage.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.i
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.i
 .PHONY : DisplayImage.cpp.i
 
 DisplayImage.s: DisplayImage.cpp.s
@@ -132,7 +145,7 @@ DisplayImage.s: DisplayImage.cpp.s
 
 # target to generate assembly for a file
 DisplayImage.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.s
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.s
 .PHONY : DisplayImage.cpp.s
 
 KMeansCluster.o: KMeansCluster.cpp.o
@@ -140,7 +153,7 @@ KMeansCluster.o: KMeansCluster.cpp.o
 
 # target to build an object file
 KMeansCluster.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.o
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/KMeansCluster.cpp.o
 .PHONY : KMeansCluster.cpp.o
 
 KMeansCluster.i: KMeansCluster.cpp.i
@@ -148,7 +161,7 @@ KMeansCluster.i: KMeansCluster.cpp.i
 
 # target to preprocess a source file
 KMeansCluster.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.i
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/KMeansCluster.cpp.i
 .PHONY : KMeansCluster.cpp.i
 
 KMeansCluster.s: KMeansCluster.cpp.s
@@ -156,7 +169,7 @@ KMeansCluster.s: KMeansCluster.cpp.s
 
 # target to generate assembly for a file
 KMeansCluster.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.s
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/KMeansCluster.cpp.s
 .PHONY : KMeansCluster.cpp.s
 
 ROTAverage.o: ROTAverage.cpp.o
@@ -164,7 +177,7 @@ ROTAverage.o: ROTAverage.cpp.o
 
 # target to build an object file
 ROTAverage.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.o
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/ROTAverage.cpp.o
 .PHONY : ROTAverage.cpp.o
 
 ROTAverage.i: ROTAverage.cpp.i
@@ -172,7 +185,7 @@ ROTAverage.i: ROTAverage.cpp.i
 
 # target to preprocess a source file
 ROTAverage.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.i
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/ROTAverage.cpp.i
 .PHONY : ROTAverage.cpp.i
 
 ROTAverage.s: ROTAverage.cpp.s
@@ -180,7 +193,7 @@ ROTAverage.s: ROTAverage.cpp.s
 
 # target to generate assembly for a file
 ROTAverage.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.s
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/ROTAverage.cpp.s
 .PHONY : ROTAverage.cpp.s
 
 Sizer.o: Sizer.cpp.o
@@ -188,7 +201,7 @@ Sizer.o: Sizer.cpp.o
 
 # target to build an object file
 Sizer.cpp.o:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.o
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Sizer.cpp.o
 .PHONY : Sizer.cpp.o
 
 Sizer.i: Sizer.cpp.i
@@ -196,7 +209,7 @@ Sizer.i: Sizer.cpp.i
 
 # target to preprocess a source file
 Sizer.cpp.i:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.i
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Sizer.cpp.i
 .PHONY : Sizer.cpp.i
 
 Sizer.s: Sizer.cpp.s
@@ -204,8 +217,32 @@ Sizer.s: Sizer.cpp.s
 
 # target to generate assembly for a file
 Sizer.cpp.s:
-	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.s
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Sizer.cpp.s
 .PHONY : Sizer.cpp.s
+
+train.o: train.cpp.o
+.PHONY : train.o
+
+# target to build an object file
+train.cpp.o:
+	$(MAKE) -f CMakeFiles/train.dir/build.make CMakeFiles/train.dir/train.cpp.o
+.PHONY : train.cpp.o
+
+train.i: train.cpp.i
+.PHONY : train.i
+
+# target to preprocess a source file
+train.cpp.i:
+	$(MAKE) -f CMakeFiles/train.dir/build.make CMakeFiles/train.dir/train.cpp.i
+.PHONY : train.cpp.i
+
+train.s: train.cpp.s
+.PHONY : train.s
+
+# target to generate assembly for a file
+train.cpp.s:
+	$(MAKE) -f CMakeFiles/train.dir/build.make CMakeFiles/train.dir/train.cpp.s
+.PHONY : train.cpp.s
 
 # Help Target
 help:
@@ -213,9 +250,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... DisplayImage"
+	@echo "... aesthetic"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... train"
 	@echo "... DisplayImage.o"
 	@echo "... DisplayImage.i"
 	@echo "... DisplayImage.s"
@@ -228,6 +266,9 @@ help:
 	@echo "... Sizer.o"
 	@echo "... Sizer.i"
 	@echo "... Sizer.s"
+	@echo "... train.o"
+	@echo "... train.i"
+	@echo "... train.s"
 .PHONY : help
 
 

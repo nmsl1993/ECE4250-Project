@@ -9,6 +9,7 @@
 #define ROTAVERAGE_HPP_
 
 #include <opencv2/opencv.hpp>
+#include "Aesthetics.hpp"
 
 cv::Scalar ROTAverage(cv::Mat in);
 

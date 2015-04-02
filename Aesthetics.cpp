@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <opencv2/opencv.hpp>
 #include "ROTAverage.hpp"
 #include "KMeansCluster.hpp"
+#include "Aesthetics.hpp"
 using namespace cv;
-//#define _DEBUG_
 
 
 int displayImage(char* imname)

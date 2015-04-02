@@ -9,6 +9,7 @@
 #define SIZER_HPP_
 
 #include <opencv2/opencv.hpp>
+#include "Aesthetics.hpp"
 
 int SizeFeature(cv::Mat in);
 float AspectRatioFeature(cv::Mat in);

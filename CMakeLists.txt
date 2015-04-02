@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project( aesthetic )
 find_package( OpenCV REQUIRED )
-add_library( aesthetic DisplayImage.cpp ROTAverage.cpp 
-Sizer.cpp KMeansCluster.cpp)
+add_library( aesthetic Aesthetics.cpp ROTAverage.cpp Sizer.cpp KMeansCluster.cpp)
 target_link_libraries( aesthetic ${OpenCV_LIBS} )
 
 cmake_minimum_required(VERSION 2.8)

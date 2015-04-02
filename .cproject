@@ -35,9 +35,9 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="0.2112804969.861197926" name="DisplayImage.cpp" rcbsApplicability="disable" resourcePath="DisplayImage.cpp" toolsToInvoke="org.eclipse.cdt.build.core.settings.holder.555185903.348958781">
-						<tool id="org.eclipse.cdt.build.core.settings.holder.555185903.348958781" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.555185903">
-							<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.452389339" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
+					<fileInfo id="0.2112804969.861197926" name="DisplayImage.cpp" rcbsApplicability="disable" resourcePath="Aesthetics.cpp" toolsToInvoke="org.eclipse.cdt.build.core.settings.holder.555185903.348958781">
+						<tool id="org.eclipse.cdt.build.core.settings.holder.555185903.348958781" name="GNU C++" superClass="org.eclipse.cdt.build.core.settings.holder.929629047">
+							<option id="org.eclipse.cdt.build.core.settings.holder.incpaths.452389339" name="Include Paths" superClass="org.eclipse.cdt.build.core.settings.holder.incpaths" valueType="includePath">
 								<listOptionValue builtIn="false" value="/usr/include/opencv2"/>
 								<listOptionValue builtIn="false" value="/usr/include"/>
 								<listOptionValue builtIn="false" value="/usr/include/opencv2/calib3d"/>

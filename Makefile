@@ -124,29 +124,29 @@ train/fast:
 	$(MAKE) -f CMakeFiles/train.dir/build.make CMakeFiles/train.dir/build
 .PHONY : train/fast
 
-DisplayImage.o: DisplayImage.cpp.o
-.PHONY : DisplayImage.o
+Aesthetics.o: Aesthetics.cpp.o
+.PHONY : Aesthetics.o
 
 # target to build an object file
-DisplayImage.cpp.o:
-	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.o
-.PHONY : DisplayImage.cpp.o
+Aesthetics.cpp.o:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Aesthetics.cpp.o
+.PHONY : Aesthetics.cpp.o
 
-DisplayImage.i: DisplayImage.cpp.i
-.PHONY : DisplayImage.i
+Aesthetics.i: Aesthetics.cpp.i
+.PHONY : Aesthetics.i
 
 # target to preprocess a source file
-DisplayImage.cpp.i:
-	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.i
-.PHONY : DisplayImage.cpp.i
+Aesthetics.cpp.i:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Aesthetics.cpp.i
+.PHONY : Aesthetics.cpp.i
 
-DisplayImage.s: DisplayImage.cpp.s
-.PHONY : DisplayImage.s
+Aesthetics.s: Aesthetics.cpp.s
+.PHONY : Aesthetics.s
 
 # target to generate assembly for a file
-DisplayImage.cpp.s:
-	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/DisplayImage.cpp.s
-.PHONY : DisplayImage.cpp.s
+Aesthetics.cpp.s:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Aesthetics.cpp.s
+.PHONY : Aesthetics.cpp.s
 
 KMeansCluster.o: KMeansCluster.cpp.o
 .PHONY : KMeansCluster.o
@@ -254,9 +254,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... train"
-	@echo "... DisplayImage.o"
-	@echo "... DisplayImage.i"
-	@echo "... DisplayImage.s"
+	@echo "... Aesthetics.o"
+	@echo "... Aesthetics.i"
+	@echo "... Aesthetics.s"
 	@echo "... KMeansCluster.o"
 	@echo "... KMeansCluster.i"
 	@echo "... KMeansCluster.s"

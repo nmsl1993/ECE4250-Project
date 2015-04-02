@@ -49,4 +49,15 @@ int displayImage(char* imname)
    waitKey(0);
    return 0;
 }
+void scoreImage(char * imname, Mat outputScore)
+{
+	float data[SVM_PARAMS_NUM] = {0.0f,101,2.0f,3.0f
+			,4.0f,5.1f,6.0f,7.0f,8.0f,9.0f,10.0f,11.0f
+			,12.0f,13.0f,14.0f};
+	Mat temp(1,SVM_PARAMS_NUM,CV_32FC1,data);
+
+	temp.copyTo(outputScore);
+	//std::cout << score << std::endl;
+
+}
 

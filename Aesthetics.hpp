@@ -11,9 +11,9 @@
 
 //#define _DEBUG_
 #include <opencv2/opencv.hpp>
-
+const int SVM_PARAMS_NUM = 15;
 int displayImage(char* imname);
 
-
+void scoreImage(char * imname, cv::Mat outputScore);
 
 #endif /* AESTHETICS_HPP_ */

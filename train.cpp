@@ -34,18 +34,21 @@ int main()
 	}
 
 	cout << "dinners over" <<endl;
+	cv::Mat trainingData(vs.size(),SVM_PARAMS_NUM, CV_32FC1);
 	for(map<string,int>::iterator it = vs.begin(); it !=vs.end(); it++)
 	{
-		if(it->second == 0)
+		if(it->second == 1)
 		{
-			string full_path(path + it->first);
-			cout <<  full_path << endl;
-
-			displayImage((char * )full_path.c_str());
+			char * path_img = (char * ) (path + it->first).c_str();
+			displayImage(path_img);
+			cv::Mat roi(trainingData(cv::Rect(0,vs.size()-5,SVM_PARAMS_NUM,1))); // now, it points to the original matrix;
+			scoreImage(path_img,roi);
+			break;
 		}
 
 
 	}
+	cout << trainingData <<endl;
 
 
 	return 0;

@@ -135,6 +135,30 @@ DisplayImage.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/DisplayImage.cpp.s
 .PHONY : DisplayImage.cpp.s
 
+KMeansCluster.o: KMeansCluster.cpp.o
+.PHONY : KMeansCluster.o
+
+# target to build an object file
+KMeansCluster.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.o
+.PHONY : KMeansCluster.cpp.o
+
+KMeansCluster.i: KMeansCluster.cpp.i
+.PHONY : KMeansCluster.i
+
+# target to preprocess a source file
+KMeansCluster.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.i
+.PHONY : KMeansCluster.cpp.i
+
+KMeansCluster.s: KMeansCluster.cpp.s
+.PHONY : KMeansCluster.s
+
+# target to generate assembly for a file
+KMeansCluster.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/KMeansCluster.cpp.s
+.PHONY : KMeansCluster.cpp.s
+
 ROTAverage.o: ROTAverage.cpp.o
 .PHONY : ROTAverage.o
 
@@ -159,6 +183,30 @@ ROTAverage.cpp.s:
 	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/ROTAverage.cpp.s
 .PHONY : ROTAverage.cpp.s
 
+Sizer.o: Sizer.cpp.o
+.PHONY : Sizer.o
+
+# target to build an object file
+Sizer.cpp.o:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.o
+.PHONY : Sizer.cpp.o
+
+Sizer.i: Sizer.cpp.i
+.PHONY : Sizer.i
+
+# target to preprocess a source file
+Sizer.cpp.i:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.i
+.PHONY : Sizer.cpp.i
+
+Sizer.s: Sizer.cpp.s
+.PHONY : Sizer.s
+
+# target to generate assembly for a file
+Sizer.cpp.s:
+	$(MAKE) -f CMakeFiles/DisplayImage.dir/build.make CMakeFiles/DisplayImage.dir/Sizer.cpp.s
+.PHONY : Sizer.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -171,9 +219,15 @@ help:
 	@echo "... DisplayImage.o"
 	@echo "... DisplayImage.i"
 	@echo "... DisplayImage.s"
+	@echo "... KMeansCluster.o"
+	@echo "... KMeansCluster.i"
+	@echo "... KMeansCluster.s"
 	@echo "... ROTAverage.o"
 	@echo "... ROTAverage.i"
 	@echo "... ROTAverage.s"
+	@echo "... Sizer.o"
+	@echo "... Sizer.i"
+	@echo "... Sizer.s"
 .PHONY : help
 
 

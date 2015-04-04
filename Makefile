@@ -112,6 +112,19 @@ aesthetic/fast:
 .PHONY : aesthetic/fast
 
 #=============================================================================
+# Target rules for targets named predict
+
+# Build rule for target.
+predict: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 predict
+.PHONY : predict
+
+# fast build rule for target.
+predict/fast:
+	$(MAKE) -f CMakeFiles/predict.dir/build.make CMakeFiles/predict.dir/build
+.PHONY : predict/fast
+
+#=============================================================================
 # Target rules for targets named train
 
 # Build rule for target.
@@ -220,6 +233,54 @@ Sizer.cpp.s:
 	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Sizer.cpp.s
 .PHONY : Sizer.cpp.s
 
+Transforms.o: Transforms.cpp.o
+.PHONY : Transforms.o
+
+# target to build an object file
+Transforms.cpp.o:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Transforms.cpp.o
+.PHONY : Transforms.cpp.o
+
+Transforms.i: Transforms.cpp.i
+.PHONY : Transforms.i
+
+# target to preprocess a source file
+Transforms.cpp.i:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Transforms.cpp.i
+.PHONY : Transforms.cpp.i
+
+Transforms.s: Transforms.cpp.s
+.PHONY : Transforms.s
+
+# target to generate assembly for a file
+Transforms.cpp.s:
+	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Transforms.cpp.s
+.PHONY : Transforms.cpp.s
+
+predict.o: predict.cpp.o
+.PHONY : predict.o
+
+# target to build an object file
+predict.cpp.o:
+	$(MAKE) -f CMakeFiles/predict.dir/build.make CMakeFiles/predict.dir/predict.cpp.o
+.PHONY : predict.cpp.o
+
+predict.i: predict.cpp.i
+.PHONY : predict.i
+
+# target to preprocess a source file
+predict.cpp.i:
+	$(MAKE) -f CMakeFiles/predict.dir/build.make CMakeFiles/predict.dir/predict.cpp.i
+.PHONY : predict.cpp.i
+
+predict.s: predict.cpp.s
+.PHONY : predict.s
+
+# target to generate assembly for a file
+predict.cpp.s:
+	$(MAKE) -f CMakeFiles/predict.dir/build.make CMakeFiles/predict.dir/predict.cpp.s
+.PHONY : predict.cpp.s
+
 train.o: train.cpp.o
 .PHONY : train.o
 
@@ -252,6 +313,7 @@ help:
 	@echo "... depend"
 	@echo "... aesthetic"
 	@echo "... edit_cache"
+	@echo "... predict"
 	@echo "... rebuild_cache"
 	@echo "... train"
 	@echo "... Aesthetics.o"
@@ -266,6 +328,12 @@ help:
 	@echo "... Sizer.o"
 	@echo "... Sizer.i"
 	@echo "... Sizer.s"
+	@echo "... Transforms.o"
+	@echo "... Transforms.i"
+	@echo "... Transforms.s"
+	@echo "... predict.o"
+	@echo "... predict.i"
+	@echo "... predict.s"
 	@echo "... train.o"
 	@echo "... train.i"
 	@echo "... train.s"

@@ -112,6 +112,19 @@ aesthetic/fast:
 .PHONY : aesthetic/fast
 
 #=============================================================================
+# Target rules for targets named descript
+
+# Build rule for target.
+descript: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 descript
+.PHONY : descript
+
+# fast build rule for target.
+descript/fast:
+	$(MAKE) -f CMakeFiles/descript.dir/build.make CMakeFiles/descript.dir/build
+.PHONY : descript/fast
+
+#=============================================================================
 # Target rules for targets named predict
 
 # Build rule for target.
@@ -257,6 +270,30 @@ Transforms.cpp.s:
 	$(MAKE) -f CMakeFiles/aesthetic.dir/build.make CMakeFiles/aesthetic.dir/Transforms.cpp.s
 .PHONY : Transforms.cpp.s
 
+descript.o: descript.cpp.o
+.PHONY : descript.o
+
+# target to build an object file
+descript.cpp.o:
+	$(MAKE) -f CMakeFiles/descript.dir/build.make CMakeFiles/descript.dir/descript.cpp.o
+.PHONY : descript.cpp.o
+
+descript.i: descript.cpp.i
+.PHONY : descript.i
+
+# target to preprocess a source file
+descript.cpp.i:
+	$(MAKE) -f CMakeFiles/descript.dir/build.make CMakeFiles/descript.dir/descript.cpp.i
+.PHONY : descript.cpp.i
+
+descript.s: descript.cpp.s
+.PHONY : descript.s
+
+# target to generate assembly for a file
+descript.cpp.s:
+	$(MAKE) -f CMakeFiles/descript.dir/build.make CMakeFiles/descript.dir/descript.cpp.s
+.PHONY : descript.cpp.s
+
 predict.o: predict.cpp.o
 .PHONY : predict.o
 
@@ -312,6 +349,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... aesthetic"
+	@echo "... descript"
 	@echo "... edit_cache"
 	@echo "... predict"
 	@echo "... rebuild_cache"
@@ -331,6 +369,9 @@ help:
 	@echo "... Transforms.o"
 	@echo "... Transforms.i"
 	@echo "... Transforms.s"
+	@echo "... descript.o"
+	@echo "... descript.i"
+	@echo "... descript.s"
 	@echo "... predict.o"
 	@echo "... predict.i"
 	@echo "... predict.s"

@@ -51,10 +51,6 @@ int main()
 
 		cout << i << " of " << vs.size() << endl;
 		i++;
-		if(i == readMax)
-		{
-			break;
-		}
 	}
 	for(int c = 0; c < SVM_PARAMS_NUM; c++)
 	{

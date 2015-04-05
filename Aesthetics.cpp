@@ -3,6 +3,7 @@
 #include "KMeansCluster.hpp"
 #include "Aesthetics.hpp"
 #include "Sizer.hpp"
+#include "Transforms.hpp"
 using namespace cv;
 
 
@@ -52,11 +53,12 @@ int displayImage(char* imname)
 }
 void scoreImage(char * imname, Mat outputScore)
 {
+	static int count = 0;
 	/*
 	float data[SVM_PARAMS_NUM] = {0.2f,101,t+t/10+t/100.0,3.0f
 			,4.0f,5.10001f,6.0f,7.0f,8.0f,9.0f,10.0f,11.0f
 			,12.0f,13.0f,14.0f};
-			*/
+	 */
 	Mat image, hsv_image, luv_image;
 
 	image = imread( imname, 1 );
@@ -110,8 +112,33 @@ void scoreImage(char * imname, Mat outputScore)
 
 	luvmeanmat.copyTo(outputScore(Rect(8,0,3,1)));
 
-	//std::cout <<luvmeanmat<<std::endl;
-	//std::cout <<luv_mean<<std::endl;
+	/****************************/
 
+	/****** Centrist Algornthim **** */
+	Mat grayScale, gs_float;
+	Mat censusImage(image.size().height-2,image.size().width-2,CV_8UC1);
+
+	cvtColor(image,grayScale,CV_BGR2GRAY);
+	grayScale.convertTo(gs_float,CV_32FC1,1/255.0);//gs_float
+
+	censusTransform<float>(gs_float, censusImage);
+
+	MatND hist;
+	int channels[] = {0};
+	int histSize[] = {256};
+	float gray_range[] = {0,256.0};
+	const float * ranges[] = {gray_range};
+	calcHist(&censusImage,1,channels,Mat(),hist,1,histSize,ranges,true,false);
+
+
+	Mat hist_transpose;
+	transpose(hist,hist_transpose);
+	Mat cutHist = hist_transpose(Rect(1,0,254,1));
+
+	Mat floatHist;
+	cutHist.convertTo(floatHist,CV_32FC1,1.0/sum(cutHist).val[0]);
+	floatHist.copyTo(outputScore(Rect(11,0,254,1)));
+count++;
+	/******************************/
 }
 

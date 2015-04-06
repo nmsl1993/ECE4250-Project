@@ -1,15 +1,15 @@
 #include <opencv2/opencv.hpp>
-
+#include "KMeansCluster.hpp"
 #include "Transforms.hpp"
 using namespace cv;
 int main()
 {
 	Mat image,grayScale, gs_float;
-	image = imread( "94615.jpg", 1 );
+	image = imread( "745615.jpg", 1 );
 	assert(image.data );
 	//Mat censusImage(image.size().width-1,image.size().height-1,CV_8UC1);
 	Mat censusImage(image.size().height-1,image.size().width-1,CV_8UC1);
-
+	KMeansCluster kc (image,5);
 	cvtColor(image,grayScale,CV_BGR2GRAY);
 	grayScale.convertTo(gs_float,CV_32FC1,1/255.0);//gs_float
 	//std::cout << gs_float << std::endl;

@@ -15,9 +15,9 @@ KMeansCluster::KMeansCluster(Mat in, int cluster_number) {
 	TermCriteria criteria = TermCriteria(TermCriteria::COUNT, 10, 1);
 	kmeans(reshaped_image32f, cluster_number, labels, criteria, 1,
 			KMEANS_PP_CENTERS, centers);
-#ifdef _DEBUG_
+//#ifdef _DEBUG_
 	show_result(labels, centers, luv_image.rows, luv_image.cols);
-#endif
+//#endif
 }
 Mat KMeansCluster::getHSVMeans() {
 

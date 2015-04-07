@@ -137,7 +137,10 @@ void scoreImage(char * imname, Mat outputScore)
 
 	Mat floatHist;
 	cutHist.convertTo(floatHist,CV_32FC1,1.0/sum(cutHist).val[0]);
-	floatHist.copyTo(outputScore(Rect(11,0,254,1)));
+	//floatHist.copyTo(outputScore(Rect(11,0,254,1)));
+
+	floatHist.copyTo(outputScore(Rect(0,0,254,1)));
+
 count++;
 	/******************************/
 }

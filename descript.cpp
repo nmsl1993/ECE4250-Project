@@ -23,7 +23,7 @@ int main()
 	string index;
 	string score_str;
 	string path ("../training/image/");
-	map<string,int> vs;
+	vector<pair <string,int> > vs;
 
 	int t = 0;
 	while ( index_train.good() && ground_truth.good())
@@ -33,36 +33,37 @@ int main()
 		//cout << index << endl;
 		int score;
 		istringstream(score_str) >> score;
-		vs[trim(index)]=score;
+		pair<string,int> p;
+		p.first = trim(index);
+		p.second = score;
+		vs.push_back(p);
 	}
 
 	Mat scoreData(readMax,SVM_PARAMS_NUM, CV_32FC1);
 	Mat labelsData(readMax,1, CV_32FC1);
-	int i = 0;
-	for(map<string,int>::iterator it = vs.begin(); it !=vs.end(); it++)
+	for(int i = 0; i < readMax; i++)
 	{
 
-		char * path_img = (char * ) (path + it->first).c_str();
+		char * path_img = (char * ) (path + vs[i].first).c_str();
 		Mat roi(scoreData(Rect(0,i,SVM_PARAMS_NUM,1))); // now, it points to the original matrix;
-		labelsData.at<float>(i) = it->second;
+		labelsData.at<float>(i) = vs[i].second;
 
 		scoreImage(path_img,roi);
 
 		cout << i << " of " << vs.size() << endl;
-		i++;
-		if(i == readMax)
-			break;
+		//cout <<  << endl;
 	}
-	for(int c = 0; c < SVM_PARAMS_NUM; c++)
-	{
-		Mat col = scoreData.col(c);
-		normalize(col,col, 0, 1, NORM_MINMAX);
-
-	}
+	
+	
+	
 	cout << "scores normalized" <<endl;
 	
 	cout << "saving" <<endl;
 	Mat c = scoreData.clone(); //We do this to ensure that the data is continous
+	Mat d = labelsData.clone(); //We do this to ensure that the data is continous
+
 	boost::serialization::saveMat(c,string("feature.bin"));
+	boost::serialization::saveMat(d,string("labels.bin"));
+
 	return 0;
 }

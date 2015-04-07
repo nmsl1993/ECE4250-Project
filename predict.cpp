@@ -26,19 +26,21 @@ int main()
 	const float * ranges[] = {gray_range};
 	calcHist(&censusImage,1,channels,Mat(),hist,1,histSize,ranges,true,false);
 
-	std::cout << hist.size() << std::endl;
+//	std::cout << hist.size() << std::endl;
 
 	Mat hist_transpose;
 	transpose(hist,hist_transpose);
 	Mat cutHist = hist_transpose(Rect(1,0,254,1));
 
-	std::cout << hist_transpose << std::endl;
+//	std::cout << hist_transpose << std::endl;
 
-	std::cout << cutHist << std::endl;
+//	std::cout << cutHist << std::endl;
 
-	std::cout << sum(cutHist).val[0] << std::endl;
+//	std::cout << sum(cutHist).val[0] << std::endl;
 	Mat floatHist;
 	cutHist.convertTo(floatHist,CV_32FC1,1.0/sum(cutHist).val[0]);
+
+	std::cout << floatHist << std::endl;
 	while(waitKey(100) != 'x')
 	{
 	;

@@ -12,11 +12,11 @@ KMeansCluster::KMeansCluster(Mat in, int cluster_number) {
 	assert(luv_image.type() == CV_8UC3);
 	reshaped_image.convertTo(reshaped_image32f, CV_32FC1, 1.0 / 255.0);
 
-	TermCriteria criteria = TermCriteria(TermCriteria::COUNT, 10, 1);
+	TermCriteria criteria = TermCriteria(TermCriteria::COUNT + cv::TermCriteria::EPS, 50, .001);
 	kmeans(reshaped_image32f, cluster_number, labels, criteria, 1,
 			KMEANS_PP_CENTERS, centers);
 //#ifdef _DEBUG_
-	show_result(labels, centers, luv_image.rows, luv_image.cols);
+	//show_result(labels, centers, luv_image.rows, luv_image.cols);
 //#endif
 }
 Mat KMeansCluster::getHSVMeans() {
@@ -32,6 +32,34 @@ Mat KMeansCluster::getHSVMeans() {
 	std::cout << hsvCenters << std::endl;
 #endif
 	return hsvCenters;
+}
+
+Mat KMeansCluster::getImage() {
+
+	assert(labels.type() == CV_32SC1);
+	assert(centers.type() == CV_32FC1);
+
+	Mat U8C3_image(image.size().height, image.size().width, CV_8UC3);
+	MatIterator_<Vec3b> U8C3_first = U8C3_image.begin<Vec3b>();
+	MatIterator_<Vec3b> U8C3_last = U8C3_image.end<Vec3b>();
+	MatConstIterator_<int> label_first = labels.begin<int>();
+
+
+	//std::cout << centers << std::endl;
+	Mat centers_u8;
+	centers.convertTo(centers_u8, CV_8UC1, 255.0);
+
+	Mat centers_u8c3 = centers_u8.reshape(3);
+
+	while (U8C3_first != U8C3_last) {
+		const Vec3b& luv = centers_u8c3.ptr<Vec3b>(*label_first)[0];
+		*U8C3_first = luv;
+		++U8C3_first;
+		++label_first;
+	}
+	cvtColor(U8C3_image, U8C3_image, CV_Luv2BGR);
+
+	return U8C3_image;
 }
 KMeansCluster::~KMeansCluster() {
 	// TODO Auto-generated destructor stub

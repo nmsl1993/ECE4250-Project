@@ -11,7 +11,9 @@
 
 //#define _DEBUG_
 #include <opencv2/opencv.hpp>
-const int SVM_PARAMS_NUM = 254;
+//const int SVM_PARAMS_NUM = 254+26;
+const int SVM_PARAMS_NUM = 254+11;
+
 int displayImage(char* imname);
 
 void scoreImage(char * imname, cv::Mat outputScore);

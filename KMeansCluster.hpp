@@ -19,6 +19,7 @@ public:
 	virtual ~KMeansCluster();
 
 	cv::Mat getHSVMeans();
+	cv::Mat getImage();
 };
 
 #endif /* KMEANSCLUSTER_HPP_ */

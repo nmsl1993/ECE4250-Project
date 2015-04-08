@@ -113,6 +113,17 @@ void scoreImage(char * imname, Mat outputScore)
 	luvmeanmat.copyTo(outputScore(Rect(8,0,3,1)));
 
 	/****************************/
+	//KMeans regioning
+
+	KMeansCluster kc(image,5);
+	Mat kcmeans = kc.getHSVMeans();
+	Mat kcmeans_float;
+
+	kcmeans.convertTo(kcmeans_float,CV_32FC1,1/255.0);
+
+	Mat kcmeans_float_flat(1,15,CV_32FC1,kcmeans_float.data);
+
+	kcmeans_float_flat.copyTo(outputScore(Rect(11,0,15,1)));
 
 	/****** Centrist Algornthim **** */
 	Mat grayScale, gs_float;
@@ -137,9 +148,9 @@ void scoreImage(char * imname, Mat outputScore)
 
 	Mat floatHist;
 	cutHist.convertTo(floatHist,CV_32FC1,1.0/sum(cutHist).val[0]);
-	//floatHist.copyTo(outputScore(Rect(11,0,254,1)));
+	floatHist.copyTo(outputScore(Rect(26,0,254,1)));
 
-	floatHist.copyTo(outputScore(Rect(0,0,254,1)));
+	//floatHist.copyTo(outputScore(Rect(0,0,254,1)));
 
 count++;
 	/******************************/

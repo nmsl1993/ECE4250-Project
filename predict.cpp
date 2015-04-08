@@ -10,11 +10,13 @@ int main()
 	//Mat censusImage(image.size().width-1,image.size().height-1,CV_8UC1);
 	Mat censusImage(image.size().height-1,image.size().width-1,CV_8UC1);
 	KMeansCluster kc (image,5);
+	Mat kmeans_img = kc.getImage();
 	cvtColor(image,grayScale,CV_BGR2GRAY);
 	grayScale.convertTo(gs_float,CV_32FC1,1/255.0);//gs_float
 	//std::cout << gs_float << std::endl;
 	censusTransform<float>(gs_float, censusImage);
 	imshow("image" , image);
+	imshow("KMeans" , kmeans_img);
 
 	imshow("gs_float" , gs_float);
 	imshow("Census" , censusImage);

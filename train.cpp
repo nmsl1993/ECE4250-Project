@@ -8,7 +8,7 @@
 #include "serialize_mat.hpp"
 
 const int trainSize = 3000;
-
+const int iterations = 10;
 using namespace std;
 using namespace cv;
 bool testBinValid(Mat features, Mat labels);
@@ -20,10 +20,10 @@ int main()
 	Mat featureData;
 	Mat labelData;
 	cout << "loading" <<endl;
-	boost::serialization::loadMat(featureData,string("feature.bin"));
+	boost::serialization::loadMat(featureData,string("feature_old.bin"));
 	boost::serialization::loadMat(labelData,string("labels.bin"));
 
-	assert(testBinValid(featureData, labelData));
+	//assert(testBinValid(featureData, labelData));
 
 	int validationSize = featureData.size().height - trainSize;
 
@@ -45,7 +45,11 @@ int main()
 		//cout << featureData.row(c) << endl;
 		vp[c].first = featureData.row(c);
 
-		vp[c].second = labelData.at<float>(c,1);
+		vp[c].second = round(labelData.at<float>(c,1));
+		if(vp[c].second != round(labelData.at<float>(c,1)))
+		{
+			cout << "probrem w" << vp[c].second << "@ " << c << endl;
+		}
 	}
 
 
@@ -54,7 +58,10 @@ int main()
 	Mat validationSet(validationSize,featureData.size().width,CV_32FC1);
 	Mat validationLabels(validationSize,1,CV_32FC1);
 	
+	float accumulator = 0;
+	for(int tests = 0; tests < iterations; tests++)
 	
+	{
 	random_shuffle ( vp.begin(), vp.end() );
 
 
@@ -119,7 +126,7 @@ int main()
 	params.svm_type = CvSVM::C_SVC;
 	params.kernel_type = CvSVM::RBF;
 	//params.kernel_type = CvSVM::LINEAR;
-	params.gamma = 3.7;
+	params.gamma = .1;
 	params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER,10000,1e-6);
 	CvSVM SVM;
 	cout << trainingSet.size() << " " << trainingLabels.size() << endl;
@@ -138,7 +145,11 @@ int main()
 	//compare(predict_label,trainingLabels, agreements, CMP_EQ);
 
 	agreements /= 255;
-	cout << "done prediction, " << sum(agreements)/agreements.size().height << endl;
+	accumulator += sum(agreements).val[0]/agreements.size().height;
+	}
+	cout << "done prediction, " <<  accumulator/iterations << endl;
+	
+
 	return 0;
 	
 }

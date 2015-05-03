@@ -2,30 +2,29 @@
 #include <fstream>
 #include <map>
 #include <string>
-#include <opencv2/opencv.hpp>
 #include "Aesthetics.hpp"
 #include "train.hpp"
 #include "serialize_mat.hpp"
 
-const int trainSize = 3000;
 const int iterations = 10;
 using namespace std;
 using namespace cv;
+const int train_mode = 1;
+const int trainSize = 3000;
 bool testBinValid(Mat features, Mat labels);
+
+void train(cv::Mat trainingSet, cv::Mat trainingLabels, CvSVM * SVR);
+
 int main()
 {
-	srand(time(NULL));
-	//KMeansCluster(M,4);
 	std::cout << "hello train\n" << std::endl;
 	Mat featureData;
 	Mat labelData;
-	cout << "loading" <<endl;
 	boost::serialization::loadMat(featureData,string("feature_old.bin"));
 	boost::serialization::loadMat(labelData,string("labels.bin"));
 
-	//assert(testBinValid(featureData, labelData));
-
 	int validationSize = featureData.size().height - trainSize;
+
 
 	for(int c = 0; c < SVM_PARAMS_NUM; c++)
 	{
@@ -33,8 +32,6 @@ int main()
 		normalize(col,col, 0, 1, NORM_MINMAX);
 
 	}
-	cout << "training set size " << trainSize << " validation size" << validationSize << endl;
-	//cout << labelData << endl;
 
 	vector<pair< Mat, float> >vp(featureData.size().height);
 
@@ -51,20 +48,16 @@ int main()
 			cout << "probrem w" << vp[c].second << "@ " << c << endl;
 		}
 	}
-
-
+	
+	CvSVM SVM;
+	if(train_mode)
+	{
 	Mat trainingSet(trainSize,featureData.size().width,CV_32FC1);
 	Mat trainingLabels(trainSize,1,CV_32FC1);
 	Mat validationSet(validationSize,featureData.size().width,CV_32FC1);
 	Mat validationLabels(validationSize,1,CV_32FC1);
-	
-	float accumulator = 0;
-	for(int tests = 0; tests < iterations; tests++)
-	
-	{
+	srand(time(NULL));
 	random_shuffle ( vp.begin(), vp.end() );
-
-
 	for(int i = 0; i < featureData.size().height; i++)
 	{
 		if(i<trainSize)
@@ -72,7 +65,7 @@ int main()
 
 			vp[i].first.copyTo(trainingSet.row(i));
 		
-			trainingLabels.at<float>(i) = vp[i].second;
+			trainingLabels.at<float>(i) = (float) (rand()% 10);
 		}
 		else
 		{
@@ -80,78 +73,40 @@ int main()
 			validationLabels.at<float>(i - trainSize) = vp[i].second;
 		}
 	}
-	Mat bottleneck;
-	//int match_index = 0;
-	//for(match_index = 0; t < featureData.size().height; t++)
-	//{
 
-	///}
-	//compare(validationSet.row(7000-trainSize), featureData.row(7000) ,bottleneck, CMP_EQ);
-	//assert(sum(bottleneck)[0]/255 == SVM_PARAMS_NUM);
-	
+	train(trainingSet, trainingLabels,&SVM);
+    std::string name = get_SVR_name();
+	cout << name << endl;
+	SVM.save(name.c_str());
+	}
+
 
 	/*
-	for(int q = 0; q < trainSize; q++)
-	{
-
-		if(	!trainingLabels.at<float>(q) == labelData.at<float>(q))
-		{
-		//cout << "@index" << q << " " << validationLabels.at<float>(q-trainSize) << "?=" << labelData.at<float>(q) << endl;// << "?=" << vp[q].second << endl;
-
-		cout << "@index" << q << " " << trainingLabels.at<float>(q) << "?=" << trainingSet.at<float>(q) << "?=" << vp[q].second << endl;
-		}
-
-	}
-	*/
-/*	
-	for(int q = 0; q < trainSize; q++)
-	{
-
-		if(	!validationLabels.at<float>(q) == labelData.at<float>(q+trainSize))
-		{
-		//cout << "@index" << q << " " << validationLabels.at<float>(q-trainSize) << "?=" << labelData.at<float>(q) << endl;// << "?=" << vp[q].second << endl;
-
-		cout << "@index" << q << " " << validationLabels.at<float>(q) << "?=" << labelData.at<float>(q+trainSize) << "?=" << vp[q+trainSize].second << endl;
-		}
-
-	}
-*/
-	 // RBF Kernel
-	 // gamma = 3.7
-	 // cost = 1
-	 // 20 times per feature
-	 // 5 fold cross validation
-	
-	CvSVMParams params;
-	params.svm_type = CvSVM::C_SVC;
-	params.kernel_type = CvSVM::RBF;
-	//params.kernel_type = CvSVM::LINEAR;
-	params.gamma = .1;
-	params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER,10000,1e-6);
-	CvSVM SVM;
-	cout << trainingSet.size() << " " << trainingLabels.size() << endl;
-	SVM.train(trainingSet,trainingLabels,Mat(),Mat(),params);
-	std::cout << "done training" << std::endl;
-
-
 	Mat predict_label;
 	SVM.predict(validationSet,predict_label);
 	//SVM.predict(trainingSet,predict_label);
 
 	Mat agreements;
-	//cout << trainingLabels.rowRange(900,1000) << endl;
-	//cout << predict_label.rowRange(900,1000) << endl;
 	compare(predict_label,validationLabels, agreements, CMP_EQ);
 	//compare(predict_label,trainingLabels, agreements, CMP_EQ);
 
 	agreements /= 255;
 	accumulator += sum(agreements).val[0]/agreements.size().height;
-	}
-	cout << "done prediction, " <<  accumulator/iterations << endl;
-	
 
+	*/
 	return 0;
 	
+}
+void train(Mat trainingSet, Mat trainingLabels, CvSVM  *SVR)
+{
+	
+	CvSVMParams params;
+	params.svm_type = CvSVM::EPS_SVR;
+	params.kernel_type = CvSVM::LINEAR;
+	params.p = 1;
+	params.term_crit = cvTermCriteria(CV_TERMCRIT_ITER,10000,1e-6);
+	SVR->train(trainingSet,trainingLabels,Mat(),Mat(),params);
+	//SVR->train_auto(trainingSet,trainingLabels,Mat(),Mat(),params,10);
 }
 bool testBinValid(Mat features, Mat labels)
 {

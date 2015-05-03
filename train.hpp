@@ -12,6 +12,10 @@
 #include <functional>
 #include <cctype>
 #include <locale>
+#include <ctime>
+#include <string>
+#include <opencv2/opencv.hpp>
+#define MAX_DATE 25
 
 // trim from start
 static inline std::string &ltrim(std::string &s) {
@@ -30,5 +34,20 @@ static inline std::string &trim(std::string &s) {
         return ltrim(rtrim(s));
 }
 
+static std::string get_SVR_name(void)
+{
+   time_t now;
+   char the_date[MAX_DATE];
 
+   the_date[0] = '\0';
+
+   now = time(NULL);
+
+   if (now != -1)
+   {
+      strftime(the_date, MAX_DATE, "%d_%m_%I_%M.svm", gmtime(&now));
+   }
+
+   return std::string(the_date);
+}
 #endif /* TRAIN_HPP_ */
